@@ -2,25 +2,27 @@ const bread = 15.678;
 const meat = 123.965;
 const milk = 90.2345;
 
-console.log("Maximum=", Math.max(15.678, 123.965, 90.2345));
+console.log("Maximum=", Math.max(bread, meat, milk));
 console.log("Minimum=", Math.min(bread, meat, milk));
 
 const allCost = bread + meat + milk;
 console.log("All products cost =", allCost);
 
-console.log("Integers cost =",Math.floor(bread) + Math.floor(meat) + Math.floor(milk));
+const floorSum = Math.floor(bread) + Math.floor(meat) + Math.floor(milk);
+console.log("Integers cost =",floorSum);
 
 const sumRounded = (Math.ceil(allCost / 100) * 100);
 console.log("Sum of rounded =", sumRounded);
 
-const floorSum = Math.floor(bread) + Math.floor(meat) + Math.floor(milk);
+
 if(floorSum % 2 === 0){
     console.log(true);
 } else {
 console.log(false);
 }
 
-const rest = 500- (bread + meat + milk);
+const visitorCash = 500;
+const rest = visitorCash - allCost;
 console.log ("Rest =", rest);
 
 const middleValue = (allCost / 3).toFixed(2);
@@ -36,10 +38,10 @@ const discountNumber = (allCost/100) * discount;
 const finishSum = (clearSum - discountNumber).toFixed(2);
 console.log("Clear money =", finishSum);
 
-const textTemplate = `Максимальне число: ${Math.max(15.678, 123.965, 90.2345)},
+const textTemplate = `Максимальне число: ${Math.max(bread, meat, milk)},
  мінімальне число: ${Math.min(bread, meat, milk)},
   вартість всіх товарів: ${allCost},
-   вартість цілих частин: ${Math.floor(bread) + Math.floor(meat) + Math.floor(milk)},
+   вартість цілих частин: ${floorSum},
     заокруглені до сотень: ${sumRounded},
     сума решти: ${rest},
     середнє: ${middleValue}
