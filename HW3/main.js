@@ -7,7 +7,7 @@ console.log("Function #1:", getMaxDigit(15842));
 
 function checkDegree (number, degree){
     let result = 1;
-    for ( i=0; i < degree; i++){
+    for (let i=0; i < degree; i++){
         result *= number;
     }
     return result;
@@ -39,12 +39,9 @@ function countLetter (word, letter){
     return count;
 }
 
-function getRandomPassword (leng){
-    if (leng > 8) {
-        leng = 8;
-    }
+function getRandomPassword (leng = 8){
     let password = ``;
-    let symbols = "1234567890";
+    const symbols = "1234567890";
     for (let i = 0; i < leng; i++){
         password += symbols.charAt(Math.floor(Math.random() * symbols.length));
     }
@@ -57,4 +54,4 @@ document.writeln(`<p> Function №1(найбільше число): ${getMaxDigi
 <p> Function №4(визначає суму після сплати податку в 19,5%): ${taxedSalary(8000)}.</p>
 <p> Function №5(рандомне число від 3 до 9): ${getRandomNumber(3, 9)}.</p>
 <p> Function №6(вираховує к-сть букви 'а' в слові 'Abrakadabra'): ${countLetter(`Abrakadabra`, `a`)}.</p>
-<p> Function №7(створює рандомний пароль): ${getRandomPassword(10)}.</p>`);
+<p> Function №7(створює рандомний пароль): ${getRandomPassword()}.</p>`);
