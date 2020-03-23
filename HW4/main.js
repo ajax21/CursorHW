@@ -9,7 +9,7 @@ function studentsPairs(students){
 const pairs = studentsPairs(students);
 
 function getPairsThemes(pairs, themes){
-    let pairsWithThemes = [];
+    const pairsWithThemes = [];
     for (let i = 0; i < pairs.length; i++){
         pairsWithThemes.push([pairs[i].join(' та '), themes[i]])
     }
@@ -19,7 +19,7 @@ function getPairsThemes(pairs, themes){
 const pairsThemes = getPairsThemes(pairs, themes);
 
 function getMarks(students, marks){
-    let studentsMarks = [];
+    const studentsMarks = [];
     for (let i = 0; i < students.length; i++){
         studentsMarks.push([students[i], marks[i]]);
     }
@@ -28,7 +28,9 @@ function getMarks(students, marks){
 
 function getRandomMarks (finishPairs){
     const pairsMarks = [];
-    const randomMark = Math.floor(Math.random() * 5) + 1;
+    const min = 1;
+    const max = 5;
+    const randomMark = Math.floor(Math.random() (max + 1 - min) + min);
     for(let i = 0; i < finishPairs.length; i++){
         pairsMarks.push([...finishPairs[i], randomMark])
     }

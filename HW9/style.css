@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+#block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 250px;
+    margin: 0 auto;
+}
