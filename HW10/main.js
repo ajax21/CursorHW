@@ -1,63 +1,38 @@
-function getRandomArray(length, min, max) {
-    const array = [];
-    for ( let i = 0; i < length; i++ ){
-        const item = Math.random() * (max - min) + min
-        array.push(Math.floor(item));
-    }
-    return array;
+let audio = null;
+function sounds (dataKey) {
+    const audio = document.querySelector(`audio[data-key="${dataKey}"]`);
+    const key = document.querySelector(`.key[data-key="${dataKey}"]`);
+    if(!audio) return;
+    audio.play();
+    key.classList.add('playing');
+    audio.currentTime = 0;
 }
 
-const mainArray = getRandomArray(10, 0, 100);
-
-console.log('Random array: ', mainArray);
-
-
-function getAverage(...numbers){
-    const sum = numbers.reduce((total, index) => {
-        return total + index;
-    }, 0);
-    return sum / numbers.length;
+function removePlaying (item) {
+    if(item.propertyName !== 'transform') return;
+    this.classList.remove('playing');
 }
 
-console.log('Middle value: ', getAverage(...mainArray));
+const keys = document.querySelectorAll('.key');
+keys.forEach(elem => {
+    elem.addEventListener('click', function() {
+        sounds(this.getAttribute('data-key'));
+    });
+});
+keys.forEach(el => el.addEventListener('transitionend', removePlaying)
+);
 
-
-const filterEvenNumbers = mainArray.filter(num => {
-    if (num % 2 === 1){
-        return num;
-    }
+document.addEventListener('keydown', function (event) {
+    console.log(event);
+    sounds(event.keyCode);
 });
 
-console.log('Filtered array: ', filterEvenNumbers);
-
-
-
-const negativeArray = [5, 3, -6, -15, 21, 0, -7, 121, 45, -69];
-console.log('Negative array: ', negativeArray);
-
-const countPositiveNumbers = negativeArray.filter((number) => {
-    return number > 0;
-});
-
-console.log('Count of positive numbers: ', countPositiveNumbers.length);
-
-
-const getDividedByFive = mainArray.filter((num) => {
-    return num % 5 === 0;
-});
-
-console.log('Random array numbers divided by five: ', getDividedByFive);
-
-
-function dividedByThree(string){
-    const result = [];
-    const array = string.split(" ");
-    array.map(element => {
-        for (let i = 0; i < element.length; i+=3){
-            result.push(element.slice(i, i + 3));
+document.addEventListener('play', e => {
+        if (audio && audio != e.target) {
+            audio.pause();
         }
-    })
-    return result;
-}
+        audio = e.target;
+    },
+    true
+);
 
-console.log(`Divided by three result:  ${dividedByThree("Independence")}`);
